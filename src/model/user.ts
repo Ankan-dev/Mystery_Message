@@ -22,7 +22,9 @@ interface User extends Document{
     username:string,
     email:string,
     password:string,
-    isValidate:boolean,
+    verifyCode:string,
+    expiryDate:Date,
+    isVerified:boolean,
     isAcceptingMessages:boolean,
     message:Message[]
 }
@@ -44,7 +46,10 @@ const userSchema:Schema<User>=new Schema({
         type:String,
         required:[true,"Password is required"]
     },
-    isValidate:{
+    verifyCode:{
+        type:String
+    },
+    isVerified:{
         type:Boolean,
         default:false,
     },
